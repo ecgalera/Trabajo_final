@@ -29,7 +29,7 @@ const fetchData = async()=>{
         //cargo la imagen y como no tiene el atributo se lo fijo con setAttribute(name, atributo)
         templateCard.querySelector("img").setAttribute("src", producto.thumbnailUrl)
         // al boton le agregamos el id del producto de manera dinamica con js
-        templateCard.querySelector(".btn-dark").dataset.id = producto.id
+        templateCard.querySelector(".btn-danger").dataset.id = producto.id
        //dataset.id es la manera colocar el numero del producto al boton correspondiente
         const clone = templateCard.cloneNode(true)
         fragment.appendChild(clone)
@@ -42,7 +42,7 @@ const fetchData = async()=>{
     //   console.log(e.target)
       // capturo el evento que tiene la clase que yo quiero y verifico que sea el que quiero
     //   console.log(e.target.classList.contains("btn-dark"))
-      if(e.target.classList.contains("btn-dark")){
+      if(e.target.classList.contains("btn-danger")){
           setCarrito(e.target.parentElement) // traigo la informacion de div toda la informacion
               // mandamos el elemento padre a setCarrito
       }
@@ -53,7 +53,7 @@ const fetchData = async()=>{
             // console.log(objeto)
             const producto =
             {
-                id:objeto.querySelector(".btn-dark").dataset.id,
+                id:objeto.querySelector(".btn-danger").dataset.id,
                 title:objeto.querySelector("h5").textContent,
                 precio:objeto.querySelector("p").textContent,
                 cantidad: 1,
