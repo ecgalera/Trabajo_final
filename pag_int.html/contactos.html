@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>contacto</title>
 </head>
 <body>
-    
+   
+   <div class="container-from-cont">
+
+    <div class="form-floating">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+          <option selected>Seleccione una opción</option>
+          <option value="1">Solicito cambio de producto</option>
+          <option value="2">Solicito consulta tecnica</option>
+          <option value="3">Solicito cancelación de la compra</option>
+        </select>
+        <label class="label_form-selec" for="floatingSelect">Elija una opción y escriva sus comentarios</label>
+      </div>
+
+
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Escriva sus comentarios aquí" id="floatingTextarea2" style="height: 100px" ></textarea>
+        <label for="floatingTextarea2" >Comentarios</label>
+        <button type="button" class="btn btn-dark">Enviar</button>
+      </div>
+
+    </div> 
+
+
+
 </body>
+<script src="/js/bootstrap.min.js"></script>
 </html>
