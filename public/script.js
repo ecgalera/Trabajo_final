@@ -29,7 +29,7 @@ const fetchData = async()=>{
         //cargo la imagen y como no tiene el atributo se lo fijo con setAttribute(name, atributo)
         templateCard.querySelector("img").setAttribute("src", producto.thumbnailUrl)
         // al boton le agregamos el id del producto de manera dinamica con js
-        templateCard.querySelector(".btn-danger").dataset.id = producto.id
+        templateCard.querySelector(".btn-dark").dataset.id = producto.id
        //dataset.id es la manera colocar el numero del producto al boton correspondiente
         const clone = templateCard.cloneNode(true)
         fragment.appendChild(clone)
@@ -41,8 +41,8 @@ const fetchData = async()=>{
   const addCarrito = e => { 
     //   console.log(e.target)
       // capturo el evento que tiene la clase que yo quiero y verifico que sea el que quiero
-    //   console.log(e.target.classList.contains("btn-dark"))
-      if(e.target.classList.contains("btn-danger")){
+      console.log(e.target.classList.contains("btn-dark"))
+      if(e.target.classList.contains("btn-dark")){
           setCarrito(e.target.parentElement) // traigo la informacion de div toda la informacion
               // mandamos el elemento padre a setCarrito
       }
@@ -53,7 +53,7 @@ const fetchData = async()=>{
             // console.log(objeto)
             const producto =
             {
-                id:objeto.querySelector(".btn-danger").dataset.id,
+                id:objeto.querySelector(".btn-dark").dataset.id,
                 title:objeto.querySelector("h5").textContent,
                 precio:objeto.querySelector("p").textContent,
                 cantidad: 1,
@@ -95,7 +95,7 @@ const fetchData = async()=>{
     
     if (Object.keys(carrito).length === 0) {
         footer.innerHTML = `
-        <th scope="row" colspan="5">Carrito vacío con innerHTML</th>
+        <th scope="row" colspan="5">Carrito vacío</th>
         `
         return
     }
@@ -121,40 +121,28 @@ const fetchData = async()=>{
 
 }
 
-const btnAumentarDisminuir = e => {
-    // console.log(e.target.classList.contains('btn-info'))
-    if (e.target.classList.contains('btn-info')) {
-        const producto = carrito[e.target.dataset.id]
-        producto.cantidad++
-        carrito[e.target.dataset.id] = { ...producto }
-        pintarCarrito()
-    }
+// const btnAumentarDisminuir = e => {
+//     //  console.log(e.target.classList.contains('btn-info'))
+//     if (e.target.classList.contains('btn-info')) {
+//         const producto = carrito[e.target.dataset.id]
+//         producto.cantidad++
+//         carrito[e.target.dataset.id] = { ...producto }
+//         pintarCarrito()
+//     }
 
-    if (e.target.classList.contains('btn-danger')) {
-        const producto = carrito[e.target.dataset.id]
-        producto.cantidad--
-        if (producto.cantidad === 0) {
-            delete carrito[e.target.dataset.id]
-        } else {
-            carrito[e.target.dataset.id] = {...producto}
-        }
-        pintarCarrito()
-    }
-    e.stopPropagation()
-}
+//     if (e.target.classList.contains('btn-danger')) {
+//         const producto = carrito[e.target.dataset.id]
+//         producto.cantidad--
+//         if (producto.cantidad === 0) {
+//             delete carrito[e.target.dataset.id]
+//         } else {
+//             carrito[e.target.dataset.id] = {...producto}
+//         }
+//         pintarCarrito()
+//     }
+//     e.stopPropagation()
+// }
     
 
-const navToggle = document.querySelector(".nav-toggle")
-const navMenu = document.querySelector(".nav-menu")
-
-navToggle.addEventListener("click", ()=>{
-    navMenu.classList.toggle("nav-menu_visible")
-
-    if(navMenu.classList.contains("nav-menu_visible")){
-        navToggle.setAttribute("aria-label", "Cerrar menú");
-    }else{
-        navToggle.setAttribute("aria-label", "Abrir menú")
-    }
-})
 
 
